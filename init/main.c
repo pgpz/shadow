@@ -987,8 +987,7 @@ asmlinkage __visible __init __no_sanitize_address __noreturn __no_stack_protecto
 void start_kernel(void)
 {
 	pr_info("\n");
-	pr_info("shadow linux 7.3.0 init starting . . .\n");
-	pr_info("shadow linux 7.3.0 init started. . .\n");
+	pr_info("	SHADOW LINUX %s/n", UTS_RELEASE);
 	pr_info("hello user. . ! ! !\n");
 	char *command_line;
 	char *after_dashes;
