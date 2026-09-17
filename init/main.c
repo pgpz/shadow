@@ -986,6 +986,10 @@ static void __init print_kernel_cmdline(const char *cmdline)
 asmlinkage __visible __init __no_sanitize_address __noreturn __no_stack_protector
 void start_kernel(void)
 {
+	pr_info("\n");
+	pr_info("shadow linux 7.3.0 init starting . . .\n");
+	pr_info("shadow linux 7.3.0 init started. . .\n");
+	pr_info("hello user. . ! ! !\n");
 	char *command_line;
 	char *after_dashes;
 
