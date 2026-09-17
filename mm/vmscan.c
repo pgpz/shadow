@@ -2339,6 +2339,7 @@ static void prepare_scan_control(pg_data_t *pgdat, struct scan_control *sc)
 		 * balance for CPU work.
 		 */
 		cost->count += nr_io * SWAP_CLUSTER_MAX + nr_rotated;
+		cost->count -= cost->count >> 4;
 
 		cost->last_rotated = rotated;
 		cost->last_io = io;
