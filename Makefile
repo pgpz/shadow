@@ -3,7 +3,7 @@ VERSION = 7
 PATCHLEVEL = 3
 SUBLEVEL = 0
 EXTRAVERSION = -shadow
-NAME = Baby Opossum Posse
+NAME = Strawberry Fanta Pikachu
 
 # *DOCUMENTATION*
 # To see a list of typical targets execute "make help"
