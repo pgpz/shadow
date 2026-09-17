@@ -439,7 +439,7 @@ static int rcu_divisor = 7;
 module_param(rcu_divisor, int, 0644);
 
 /* Force an exit from rcu_do_batch() after 3 milliseconds. */
-static long rcu_resched_ns = 3 * NSEC_PER_MSEC;
+static long rcu_resched_ns = 2 * NSEC_PER_MSEC;
 module_param(rcu_resched_ns, long, 0644);
 
 /*
