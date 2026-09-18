@@ -2345,28 +2345,21 @@ static inline void __run_timers(struct timer_base *base)
 {
 	struct hlist_head heads[LVL_DEPTH];
 	int levels;
+	int budget = 8;
 
 	lockdep_assert_held(&base->lock);
 
 	if (base->running_timer)
 		return;
 
-	while (time_after_eq(jiffies, base->clk) &&
+	while (budget -- > 0 &&
+		time_after_eq(jiffies, base->clk) &&
+
 	       time_after_eq(jiffies, base->next_expiry)) {
 		levels = collect_expired_timers(base, heads);
-		/*
-		 * The two possible reasons for not finding any expired
-		 * timer at this clk are that all matching timers have been
-		 * dequeued or no timer has been queued since
-		 * base::next_expiry was set to base::clk +
-		 * TIMER_NEXT_MAX_DELTA.
-		 */
+
 		WARN_ON_ONCE(!levels && !base->next_expiry_recalc
 			     && base->timers_pending);
-		/*
-		 * While executing timers, base->clk is set 1 offset ahead of
-		 * jiffies to avoid endless requeuing to current jiffies.
-		 */
 		base->clk++;
 		timer_recalc_next_expiry(base);
 
